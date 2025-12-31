@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="StapelGames - Desarrollador de aplicaciones y juegos móviles para Android. Descubre nuestras apps y juegos disponibles en Google Play.">
+    <title>StapelGames - Aplicaciones y Juegos Móviles</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #1D293D;
+            --secondary-color: #4A90E2;
+            --accent-color: #F54927;
+            --text-dark: #2C3E50;
+            --text-light: #7F8C8D;
+            --bg-light: #F8F9FA;
+            --white: #FFFFFF;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1.5rem 0;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: "🎮";
+            font-size: 2.5rem;
+        }
+
+        nav a {
+            color: var(--text-dark);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--white);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Apps Section */
+        .apps-section {
+            background: var(--white);
+            padding: 4rem 0;
+            margin: 2rem auto;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            max-width: 1200px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 3rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+            border-radius: 2px;
+        }
+
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 0 2rem;
+        }
+
+        .app-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #E0E0E0;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .app-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .app-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow);
+        }
+
+        .app-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .app-description {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .play-badge {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--white);
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: transform 0.3s;
+        }
+
+        .app-card:hover .play-badge {
+            transform: scale(1.05);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: var(--bg-light);
+            padding: 4rem 0;
+            margin: 2rem auto;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            max-width: 1200px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 0 2rem;
+        }
+
+        .contact-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .contact-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .contact-card p {
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        .contact-card a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-card a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 3rem 0 1.5rem;
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+        .footer-info {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            nav {
+                margin-top: 1rem;
+                width: 100%;
+            }
+
+            nav a {
+                margin-left: 0;
+                margin-right: 1.5rem;
+            }
+
+            .apps-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">StapelGames</a>
+                <nav>
+                    <a href="#apps">Aplicaciones</a>
+                    <a href="#contacto">Contacto</a>
+                    <a href="privacy-policy.html">Política de Privacidad</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>StapelGames</h1>
+            <p>Desarrollador de aplicaciones y juegos móviles innovadores para Android</p>
+        </div>
+    </section>
+
+    <section id="apps" class="apps-section">
+        <div class="container">
+            <h2 class="section-title">Nuestras Aplicaciones</h2>
+            <div class="apps-grid">
+                <a href="https://play.google.com/store/apps/details?id=com.stapelgames.EndlessClassic" target="_blank" class="app-card">
+                    <div class="app-icon">🎮</div>
+                    <h3 class="app-title">Endless Classic</h3>
+                    <p class="app-description">Juego clásico de estilo arcade con mecánicas adictivas y desafíos infinitos.</p>
+                    <span class="play-badge">Ver en Google Play →</span>
+                </a>
+
+                <a href="https://play.google.com/store/apps/details?id=com.radios.espanolas" target="_blank" class="app-card">
+                    <div class="app-icon">📻</div>
+                    <h3 class="app-title">Radios Españolas</h3>
+                    <p class="app-description">Escucha todas las emisoras de radio españolas en una sola aplicación. Más de 50 emisoras disponibles.</p>
+                    <span class="play-badge">Ver en Google Play →</span>
+                </a>
+
+                <a href="https://play.google.com/store/apps/details?id=com.stapelton.controldeglucosa" target="_blank" class="app-card">
+                    <div class="app-icon">📊</div>
+                    <h3 class="app-title">Control de Glucosa</h3>
+                    <p class="app-description">Aplicación para el seguimiento y control de los niveles de glucosa en sangre.</p>
+                    <span class="play-badge">Ver en Google Play →</span>
+                </a>
+
+                <a href="https://play.google.com/store/apps/details?id=com.stapelton.ratonbib" target="_blank" class="app-card">
+                    <div class="app-icon">🐭</div>
+                    <h3 class="app-title">Ratón Bib</h3>
+                    <p class="app-description">Aplicación educativa y entretenida para los más pequeños de la casa.</p>
+                    <span class="play-badge">Ver en Google Play →</span>
+                </a>
+
+                <a href="https://play.google.com/store/apps/details?id=elarmariodemacarena.es" target="_blank" class="app-card">
+                    <div class="app-icon">👗</div>
+                    <h3 class="app-title">El Armario de Macarena</h3>
+                    <p class="app-description">Descubre las últimas tendencias en moda y estilo con esta aplicación exclusiva.</p>
+                    <span class="play-badge">Ver en Google Play →</span>
+                </a>
+
+                <a href="https://play.google.com/store/apps/details?id=calzados.angel" target="_blank" class="app-card">
+                    <div class="app-icon">👟</div>
+                    <h3 class="app-title">Calzados Ángel</h3>
+                    <p class="app-description">Catálogo digital de calzado con las últimas colecciones y ofertas especiales.</p>
+                    <span class="play-badge">Ver en Google Play →</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Información de Contacto</h2>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">📧</div>
+                    <h3>Email General</h3>
+                    <p>
+                        <a href="mailto:render2012@hotmail.es">render2012@hotmail.es</a>
+                    </p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">🆘</div>
+                    <h3>Soporte Técnico</h3>
+                    <p>
+                        <a href="mailto:jjrb70@hotmail.com">jjrb70@hotmail.com</a>
+                    </p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">👤</div>
+                    <h3>Desarrollador</h3>
+                    <p>
+                        <strong>Juan José Rodríguez Blázquez</strong><br>
+                        C. Arapiles, 8, Bajo-Izq.<br>
+                        37300 Peñaranda de Bracamonte<br>
+                        España
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="https://play.google.com/store/apps/dev?id=5823369073348792503" target="_blank">Ver todas las apps en Google Play</a>
+                <a href="privacy-policy.html">Política de Privacidad</a>
+                <a href="#contacto">Contacto</a>
+            </div>
+            <div class="footer-info">
+                <p>&copy; 2025 StapelGames. Todos los derechos reservados.</p>
+                <p style="margin-top: 0.5rem;">Desarrollado con ❤️ en España</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+
